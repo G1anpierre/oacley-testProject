@@ -1,0 +1,155 @@
+// variable breakpoints
+
+$color-black: #222222;
+$color-grey: #6d6d6d;
+$color-light-grey: #cccc;
+$color-white: #ffff;
+
+// varible media queries breakpoints
+
+$md : 768px;
+
+//typography mixin-font 
+@mixin font($font-size, $line-height, $font-weight, $color: $fs-black, $letter-spacing: false, $text-transform: false) {
+    font-size: $font-size;
+    line-height: $line-height;
+    font-weight: $font-weight;
+    color: $color;
+
+    @if $text-transform {
+        text-transform: $text-transform;
+    }
+
+    @if $letter-spacing {
+        text-transform: $letter-spacing;
+    }
+}
+
+
+// Start SCSS Project
+
+
+.oacley-carousel {
+    &__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 70px;
+
+        @media (min-width: $md) {
+            margin-top: 80px;
+            margin-bottom: 20px;
+        }
+
+        .oacley-carousel__title {
+            @include font(32px, normal, 800, $color-black, -1px , uppercase);
+            margin-bottom: 20px;
+        }
+
+        .oacley-carousel__text {
+            @include font(16px, 1.5, normal, $color-grey);
+            text-align: center;
+            max-width: 330px;
+
+            @media (min-width: $md) {
+                text-align: justify;
+                max-width: 367px;
+            }
+        }
+    }
+}
+
+.owl-carousel.oacley-carousel-main {
+    @media (min-width: $md) {
+        margin-bottom: 60px;
+    }
+    
+
+    .owl-item {
+        transform: scale(.7);
+        @media (min-width: $md){
+            transform: scale(.3);
+        }
+        
+        &.center {
+            @media (min-width: $md){
+                transform: scale(1);
+            }
+        }
+    }
+
+    .owl-nav {
+        display: flex;
+        justify-content: center;
+        
+        [aria-label='Previous'],
+        [aria-label='Next'] {
+            font-size: 40px;
+            @media (min-width: $md) {
+                font-size: 20px;
+            }
+        }
+    }
+
+    .owl-dots {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+
+        @media (min-width: $md) {
+            display: none;
+        }
+        .owl-dot {
+            width: 54px;
+            height: 2px;
+            border-radius: 1px;
+            background-color: $color-light-grey;
+
+            &.active {
+                background-color: $color-black;
+            }
+        }
+    }
+}
+
+.owl-carousel-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: $md) {
+        flex-direction: row;
+        justify-content: center;
+    }
+    &__custom {
+        margin-bottom: 20px;
+        @media (min-width: $md) {
+            margin-bottom: 0;
+            margin-right: 10px;
+        }
+    }
+
+    &__custom-example {
+        margin-bottom: 70px;
+        @media (min-width: $md) {
+            margin-bottom: 0;
+            margin-left: 10px;
+        }
+    }
+
+    &__custom,
+    &__custom-example {
+        width: 250px;
+        height: 34px;
+    }
+
+
+
+    .btn {
+        @include font(18px, normal, normal, 1.29px, uppercase);
+        border-radius: 22px;
+        width: 100%;
+        letter-spacing: 0.2px;
+        font-family: 'Open Sans Condensed', sans-serif ;
+    }
+}
